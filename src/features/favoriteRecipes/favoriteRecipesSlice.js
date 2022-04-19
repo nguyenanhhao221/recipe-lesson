@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../searchTerm/searchTermSlice";
 //add recipe to favorite action creator
 export const addRecipe = recipe => {
