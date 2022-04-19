@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectSearchTerm } from "../searchTerm/searchTermSlice";
 //add recipe to favorite action creator
 export const addRecipe = recipe => {
     return {
@@ -34,3 +36,8 @@ export const favoriteRecipesReducer = (favoriteRecipes = initialState, action) =
 
 //selector
 export const selectFavoriteRecipes = state => state.favoriteRecipes;
+export const selectFavoriteFilteredRecipes = state => {
+    const favoriteRecipes = selectFavoriteRecipes(state);
+    const searchTerm = selectSearchTerm(state);
+    return favoriteRecipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()));
+};
